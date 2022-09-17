@@ -1,0 +1,23 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Resources:
+  myDistribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Origins:
+        - DomainName: awseb-e-4-AWSEBLoa-1TTK6ASIYB3T1-1372493096.us-east-2.elb.amazonaws.com
+          Id: mycloudfront
+          CustomOriginConfig:
+            HTTPPort: '80'
+            HTTPSPort: '443'
+            OriginProtocolPolicy: http-only
+        Enabled: 'true'
+        DefaultCacheBehavior:
+          TargetOriginId: mycloudfront
+          ViewerProtocolPolicy: https-only
+          AllowedMethods:
+          - GET
+          - HEAD
+          ForwardedValues:
+            QueryString: 'false'
+          

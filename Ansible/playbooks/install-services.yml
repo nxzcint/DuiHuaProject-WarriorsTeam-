@@ -1,0 +1,7 @@
+- name: Install  Webserver
+  hosts: webservers
+  roles:
+    - ../roles/Services
+    - ../roles/Jenkins
+    - ../roles/SonarQube
+  become: true

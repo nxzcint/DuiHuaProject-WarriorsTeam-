@@ -1,4 +1,4 @@
-#create ec2 with install jdk,awscli,maven
+#create ec2 with install jdk,awscli,maven, ansible
 
 AWSTemplateFormatVersion: 2010-09-09
 Description: EC2 1
@@ -6,7 +6,7 @@ Resources:
   DuiHua:
     Type: AWS::EC2::Instance
     Properties:
-      KeyName: DuiHua
+      KeyName: manar-ubuntu
       ImageId: ami-02f3416038bdb17fb
 
       InstanceType: t2.medium
@@ -23,33 +23,16 @@ Resources:
           sudo apt install maven -y
           sudo apt update
           sudo apt install awscli -y
-      SecurityGroupIds:
-        - Ref: SecurityGroup
-
-
-#create Ec2 and install ansible
-  ansible:
-    Type: AWS::EC2::Instance
-    Properties:
-      KeyName: DuiHua
-      ImageId: ami-02f3416038bdb17fb
-      InstanceType: t2.medium
-      Tags: 
-        - 
-          Key: Name
-          Value: ansible-server
-      UserData:
-        Fn::Base64: !Sub |
-          #!/bin/bash
           sudo apt update
           sudo apt install ansible -y
       SecurityGroupIds:
         - Ref: SecurityGroup
 
+
 #create security group
   SecurityGroup: 
-  Type: "AWS::EC2::SecurityGroup"
-    Properties: 
+   Type: "AWS::EC2::SecurityGroup"
+   Properties: 
       GroupDescription: "Allow http to client host"
       SecurityGroupIngress: 
         - 

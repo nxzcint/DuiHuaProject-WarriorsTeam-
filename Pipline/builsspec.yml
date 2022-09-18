@@ -24,10 +24,10 @@ phases:
     commands:
     - echo Build start on 'date'
     - mvn package
-    - mv target/*.war booktracker-0.0.1-SNAPSHOT.war
+    - mv target/*.war DuiHua-0.0.1-SNAPSHOT.war
     - echo Build ends on 'date'
 
 artifacts:
   files:
-    - booktracker-0.0.1-SNAPSHOT.war
-  name: booktracker-artifact
+    - DuiHua-0.0.1-SNAPSHOT.war
+  name: DuiHua-artifact
